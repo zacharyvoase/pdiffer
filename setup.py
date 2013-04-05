@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='pdiffer',
-      version='0.0.1',
+      version='0.0.2',
       description='A Python interface to the PerceptualDiff tool.',
       long_description=open('README.rst').read().decode('utf-8'),
       author='Zachary Voase',
