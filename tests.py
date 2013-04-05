@@ -29,6 +29,13 @@ class PDiffTest(unittest.TestCase):
         assert not res, "Identical images are different"
 
 
+class OldPDiffRegressionTest(unittest.TestCase):
+
+    def test_if_retcode_is_zero_but_diff_FAILed_result_should_be_truthy(self):
+        res = pdiffer.PDiffResult(0, u'FAIL: Images are different')
+        assert res
+
+
 class PDiffAssertionTest(unittest.TestCase):
 
     def test_assert_images_different_raises_AssertionError_on_similar_images(self):

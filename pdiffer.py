@@ -1,3 +1,4 @@
+import re
 import subprocess
 
 
@@ -56,6 +57,10 @@ class PDiffResult(object):
     __slots__ = ('returncode', 'reason')
 
     def __init__(self, returncode, reason):
+        # Older versions of perceptualdiff don't exit with a non-zero status
+        # after a failure.
+        if returncode == 0 and re.search(r'^FAIL:', reason, re.MULTILINE):
+            returncode = 1
         self.returncode = returncode
         self.reason = reason
 
